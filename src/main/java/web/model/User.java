@@ -1,26 +1,46 @@
 package web.model;
 
-public class User {
-    private int id;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "users")
+public class User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column()
     private String name;
-    private  int age;
+
+    @Column()
+    private Integer age;
+
+    @Column()
     private String gender;
+
+    @Column()
     private String work;
 
+
+    public User() {
+
+    }
 
     public User(int id, String name, int age, String gender, String work) {
         this.id = id;
         this.name = name;
-       this.age = age;
-       this.gender = gender;
-       this.work = work;
+        this.age = age;
+        this.gender = gender;
+        this.work = work;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -32,11 +52,11 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -55,4 +75,5 @@ public class User {
     public void setWork(String work) {
         this.work = work;
     }
+
 }
