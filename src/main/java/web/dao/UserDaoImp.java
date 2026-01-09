@@ -2,7 +2,6 @@ package web.dao;
 
 import web.model.User;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -33,7 +32,7 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUserById(int id) {
         User user = entityManager.find(User.class, id);
         if (user != null) {
             entityManager.remove(user);

@@ -1,7 +1,6 @@
 package web.dao;
 
 import web.model.User;
-
 import java.util.List;
 
 public interface UserDao {
@@ -11,6 +10,6 @@ public interface UserDao {
 
     User getUserById(int id);
 
-    void deleteUser(int id);
+    void deleteUserById(int id);
 
 }

@@ -6,20 +6,22 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class HelloController {
 
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    public HelloController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping(value = "/")
     public String printWelcome(ModelMap model) {
-        List<User> useer = userService.listUsers();
-        model.addAttribute("userGetList", useer);
+        List<User> user = userService.listUsers();
+        model.addAttribute("userGetList", user);
         return "allUsers";
     }
 
@@ -44,8 +46,8 @@ public class HelloController {
     }
 
     @GetMapping("/deleteUser")
-    public String deleteUser(@RequestParam("id") int id) {
-        userService.deleteUser(id);
+    public String deleteUserById(@RequestParam("id") int id) {
+        userService.deleteUserById(id);
         return "redirect:/";
     }
 }
